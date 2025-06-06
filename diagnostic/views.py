@@ -104,7 +104,6 @@ def generate_jwt(user):
 
 @csrf_exempt
 def api_login(request):
-    print('jojo')
     if request.method == 'POST':
         try:
             data = json.loads(request.body.decode('utf-8'))
@@ -192,7 +191,7 @@ def api_vehicule_list(request):
 def api_add_vehicule(request):
     if request.method == 'POST':
         try:
- 
+
             user = get_user_from_request(request)
             if not user:
                 return JsonResponse({'error': 'Utilisateur non authentifié'}, status=401)
@@ -201,11 +200,9 @@ def api_add_vehicule(request):
             marque = data['marque']
             modele = data['modele']
             immatriculation = data['immatriculation']
-            print (immatriculation)
             date_mise_en_circulation = datetime.strptime(
                 data['date_mise_en_circulation'], '%Y-%m-%d'
             ).date()
-            print (user)
             vehicule = Vehicule.objects.create(
                 proprietaire=user,
                 marque=marque,
@@ -213,7 +210,6 @@ def api_add_vehicule(request):
                 immatriculation=immatriculation,
                 date_mise_en_circulation=date_mise_en_circulation
             )
-            print (date_mise_en_circulation)
             return JsonResponse({
                 'message': 'Véhicule ajouté avec succès',
                 'vehicule_id': vehicule.id
