@@ -64,7 +64,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:5501",  # Ton frontend (ex: VS Code Live Server)
+    "http://127.0.0.1:5500",  # Ton frontend (ex: VS Code Live Server)
 ]
 
 ROOT_URLCONF = 'mon_diagnostic.urls'

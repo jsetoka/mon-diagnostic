@@ -104,9 +104,11 @@ def generate_jwt(user):
 
 @csrf_exempt
 def api_login(request):
+    print('jojo')
     if request.method == 'POST':
         try:
             data = json.loads(request.body.decode('utf-8'))
+            print(data)
             username = data['username']
             password = data['password']
         except (json.JSONDecodeError, KeyError):
