@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liste des véhicules</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+</head>
+<body class="bg-light">
+
+  <div class="container mt-5">
+    <h1 class="mb-4 text-primary">Liste des véhicules</h1>
+
+    {% if vehicules %}
+    <table class="table table-bordered table-striped shadow-sm bg-white">
+      <thead class="table-dark">
+        <tr>
+          <th>Marque</th>
+          <th>Modèle</th>
+          <th>Immatriculation</th>
+          <th>DMC</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for vehicule in vehicules %}
+        <tr>
+          <td>{{ vehicule.marque }}</td>
+          <td>{{ vehicule.modele }}</td>
+          <td>{{ vehicule.immatriculation }}</td>
+          <td>{{ vehicule.date_mise_en_circulation|date:"j/m/Y" }}</td>
+          <td>
+            <a href="{% url 'vehicule_update' vehicule.pk %}" class="btn btn-sm btn-outline-primary">
+              📦 Modifier
+            </a>
+            <a href="{% url 'vehicule_delete' vehicule.pk %}" class="btn btn-sm btn-outline-primary">
+              📦 Supprimer
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+      <div class="alert alert-warning">Aucun véhicule trouvé.</div>
+    {% endif %}
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

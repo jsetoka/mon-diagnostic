@@ -1,0 +1,18 @@
+<!-- diagnostic/templates/diagnostic/accueil.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diagnostic Auto</title>
+</head>
+<body>
+    <h1>Bonjour {{ utilisateur }}</h1>
+    <ul>
+    {% for d in diagnostics %}
+        <li>{{ d }}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
+
+
+
